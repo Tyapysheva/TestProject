@@ -9,6 +9,7 @@ public class ModelOpManagementFactory implements OperationManagementFactory<Mode
 
     @Override
     public ModelOpManagement newManagement() {
-        return null;
+        return new BasicModelOpManagement(eopF.newManagement());
+
     }
 }

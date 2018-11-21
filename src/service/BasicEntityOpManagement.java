@@ -28,6 +28,9 @@ public class BasicEntityOpManagement implements EntityOpManagement{
 
     @Override
     public void close() throws Exception {
+        if (closeConnectionOnClose) {
+            connection.close();
+        }
 
     }
 }

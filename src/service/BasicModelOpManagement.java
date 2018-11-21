@@ -1,5 +1,6 @@
 package service;
 
+import repository.BasicReservationRepo;
 import repository.ReservationRepo;
 import repository.RoomRepo;
 
@@ -13,7 +14,7 @@ public class BasicModelOpManagement implements ModelOpManagement {
 
     @Override
     public ReservationRepo reservationRepo() {
-        return null;
+        return new BasicReservationRepo(() -> entityOps);
     }
 
     @Override
@@ -23,6 +24,6 @@ public class BasicModelOpManagement implements ModelOpManagement {
 
     @Override
     public void close() throws Exception {
-
+        entityOps.close();
     }
 }

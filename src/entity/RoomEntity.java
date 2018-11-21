@@ -1,7 +1,7 @@
 package entity;
 
 public class RoomEntity implements Room {
-    private long id;
+    public long id;
     private String nameRoom;
     private int rows;
     private int columns;

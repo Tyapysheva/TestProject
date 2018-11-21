@@ -15,6 +15,7 @@ public class EntityOpManagementFactory implements OperationManagementFactory<Ent
 
     @Override
     public EntityOpManagement newManagement() {
-        return null;
+        return new BasicEntityOpManagement(sc.get(), true);
+
     }
 }

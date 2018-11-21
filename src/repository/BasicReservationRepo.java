@@ -23,21 +23,39 @@ public class BasicReservationRepo implements ReservationRepo{
 
     @Override
     public List<Reservation> all(Room room) {
+        runWithRoom(room, (re,rd) -> {
+            rd.all(re.id);
+            return null;
+        });
         return null;
+
     }
 
     @Override
     public Reservation bySeq(Room room, int seq) {
+        runWithRoom(room, (re,rd) -> {
+            rd.bySeq(re.id, seq);
+            return null;
+        });
         return null;
+
     }
 
     @Override
     public void delete(Reservation reservation) {
+        runWithRoom(reservation.room(), (re,rd) -> {
+            rd.deleteBySeq(re.id, reservation.sequence());
+            return null;
+        });
 
     }
 
     @Override
     public void save(Reservation reservation) {
+        runWithRoom(reservation.room(), (re,rd) -> {
+            rd.save(/*Please create reservation entity instance here*/null);
+            return null;
+        });
 
     }
 }
