@@ -18,6 +18,7 @@ public class BasicEntityOpManagement implements EntityOpManagement{
 
     @Override
     public ReservationEntityRepo reservationEntityRepo() {
+        // create repo, set connection to it
         return null;
     }
 

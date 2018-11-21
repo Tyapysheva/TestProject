@@ -9,7 +9,7 @@ import service.OperationManagementFactory;
 import java.util.List;
 import java.util.function.BiFunction;
 
-public class BasicReservationRepo implements ReservationRepo{
+public class BasicReservationRepo implements ReservationRepo {
 
     private OperationManagementFactory<EntityOpManagement> opManagementFactory;
 
@@ -18,12 +18,17 @@ public class BasicReservationRepo implements ReservationRepo{
     }
 
     private <R> R runWithRoom(Room room, BiFunction<RoomEntity, ReservationEntityRepo, R> f) {
-        return opManagementFactory.runWith(m -> f.apply(m.roomEntityRepo().byName(room.nameRoom()), m.reservationEntityRepo()));
+        return opManagementFactory.runWith(
+                m -> f.apply(
+                        m.roomEntityRepo().byName(room.nameRoom()),
+                        m.reservationEntityRepo()
+                )
+        );
     }
 
     @Override
     public List<Reservation> all(Room room) {
-        runWithRoom(room, (re,rd) -> {
+        runWithRoom(room, (re, rd) -> {
             rd.all(re.id);
             return null;
         });
@@ -33,7 +38,7 @@ public class BasicReservationRepo implements ReservationRepo{
 
     @Override
     public Reservation bySeq(Room room, int seq) {
-        runWithRoom(room, (re,rd) -> {
+        runWithRoom(room, (re, rd) -> {
             rd.bySeq(re.id, seq);
             return null;
         });
@@ -43,7 +48,7 @@ public class BasicReservationRepo implements ReservationRepo{
 
     @Override
     public void delete(Reservation reservation) {
-        runWithRoom(reservation.room(), (re,rd) -> {
+        runWithRoom(reservation.room(), (re, rd) -> {
             rd.deleteBySeq(re.id, reservation.sequence());
             return null;
         });
@@ -52,7 +57,7 @@ public class BasicReservationRepo implements ReservationRepo{
 
     @Override
     public void save(Reservation reservation) {
-        runWithRoom(reservation.room(), (re,rd) -> {
+        runWithRoom(reservation.room(), (re, rd) -> {
             rd.save(/*Please create reservation entity instance here*/null);
             return null;
         });
