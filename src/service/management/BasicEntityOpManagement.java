@@ -1,7 +1,8 @@
-package service;
+package service.management;
 
 import repository.ReservationEntityRepo;
 import repository.RoomEntityRepo;
+import repository.impl.RoomEntityRepoImpl;
 
 import java.sql.Connection;
 
@@ -18,6 +19,7 @@ public class BasicEntityOpManagement implements EntityOpManagement{
 
     @Override
     public ReservationEntityRepo reservationEntityRepo() {
+
         // create repo, set connection to it
         return null;
     }
@@ -25,7 +27,7 @@ public class BasicEntityOpManagement implements EntityOpManagement{
     @Override
     public RoomEntityRepo roomEntityRepo() {
 
-        return null;
+        return new RoomEntityRepoImpl(connection);
     }
 
     @Override

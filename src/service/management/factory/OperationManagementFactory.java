@@ -1,6 +1,6 @@
-package service;
+package service.management.factory;
 
-import java.lang.management.ManagementFactory;
+
 import java.util.function.Consumer;
 import java.util.function.Function;
 

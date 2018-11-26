@@ -1,4 +1,8 @@
-package service;
+package service.management.factory;
+
+import service.management.BasicModelOpManagement;
+import service.management.EntityOpManagement;
+import service.management.ModelOpManagement;
 
 public class ModelOpManagementFactory implements OperationManagementFactory<ModelOpManagement>{
     private OperationManagementFactory<EntityOpManagement> eopF;

@@ -1,4 +1,7 @@
-package service;
+package service.management.factory;
+
+import service.management.BasicEntityOpManagement;
+import service.management.EntityOpManagement;
 
 import java.sql.Connection;
 import java.util.function.Supplier;

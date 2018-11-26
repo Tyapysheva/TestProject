@@ -1,4 +1,4 @@
-package service;
+package service.management;
 
 import repository.ReservationEntityRepo;
 import repository.RoomEntityRepo;

@@ -3,8 +3,8 @@ package repository;
 import entity.Reservation;
 import entity.Room;
 import entity.RoomEntity;
-import service.EntityOpManagement;
-import service.OperationManagementFactory;
+import service.management.EntityOpManagement;
+import service.management.factory.OperationManagementFactory;
 
 import java.util.List;
 import java.util.function.BiFunction;

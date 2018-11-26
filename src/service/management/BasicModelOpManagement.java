@@ -1,8 +1,9 @@
-package service;
+package service.management;
 
 import repository.BasicReservationRepo;
 import repository.ReservationRepo;
 import repository.RoomRepo;
+import repository.impl.RoomRepoImpl;
 
 public class BasicModelOpManagement implements ModelOpManagement {
 
@@ -19,7 +20,7 @@ public class BasicModelOpManagement implements ModelOpManagement {
 
     @Override
     public RoomRepo roomRepo() {
-        return null;
+        return new RoomRepoImpl();
     }
 
     @Override
