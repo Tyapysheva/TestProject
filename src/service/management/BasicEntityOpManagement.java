@@ -26,7 +26,6 @@ public class BasicEntityOpManagement implements EntityOpManagement{
 
     @Override
     public RoomEntityRepo roomEntityRepo() {
-
         return new RoomEntityRepoImpl(connection);
     }
 

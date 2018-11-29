@@ -6,6 +6,7 @@ import entity.RoomEntity;
 import service.management.EntityOpManagement;
 import service.management.factory.OperationManagementFactory;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.function.BiFunction;
 
@@ -19,10 +20,17 @@ public class BasicReservationRepo implements ReservationRepo {
 
     private <R> R runWithRoom(Room room, BiFunction<RoomEntity, ReservationEntityRepo, R> f) {
         return opManagementFactory.runWith(
-                m -> f.apply(
-                        m.roomEntityRepo().byName(room.nameRoom()),
-                        m.reservationEntityRepo()
-                )
+                m -> {
+                    try {
+                        return f.apply(
+                                m.roomEntityRepo().byName(room.nameRoom()),
+                                m.reservationEntityRepo()
+                        );
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    return null;
+                }
         );
     }
 

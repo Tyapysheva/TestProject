@@ -3,7 +3,10 @@ package service.management;
 import repository.BasicReservationRepo;
 import repository.ReservationRepo;
 import repository.RoomRepo;
+import repository.impl.RoomEntityRepoImpl;
 import repository.impl.RoomRepoImpl;
+
+import java.sql.Connection;
 
 public class BasicModelOpManagement implements ModelOpManagement {
 
