@@ -1,13 +1,17 @@
 package repository;
 
+
 import entity.RoomEntity;
 
+import java.util.List;
+
 public interface RoomEntityRepo {
-    RoomEntity byId(long id);
+    List<RoomEntity> all()throws Exception;
+    RoomEntity byId(long id) throws Exception;
 
     RoomEntity byName(String name) throws Exception;
 
-    void save(RoomEntity room);
+    void save(RoomEntity room)throws Exception;
 }
 
 

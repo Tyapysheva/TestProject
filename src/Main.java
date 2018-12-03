@@ -1,5 +1,6 @@
 import entity.Reservation;
 import entity.Room;
+import entity.RoomEntity;
 import helper.JDBCConnectionHelper;
 import repository.RoomRepo;
 import repository.impl.RoomRepoImpl;
@@ -16,21 +17,21 @@ import java.util.function.Supplier;
 public class Main {
 
 
-    public static void main(String[] args)  throws ClassNotFoundException, SQLException{
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
 
         OperationManagementFactory<EntityOpManagement> entityOpFactory = new EntityOpManagementFactory(
                 () -> {
-            try {
-                try {
-                    return JDBCConnectionHelper.getConnection();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            return null;
+                    try {
+                        try {
+                            return JDBCConnectionHelper.getConnection();
+                        } catch (ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    return null;
                 }
 
         ); //provide connection
@@ -41,18 +42,18 @@ public class Main {
 
         Room room = modelOpFactory.runWith(management -> {
             RoomRepo roomRepo = management.roomRepo();
-            Room test;
+            Room test = new RoomEntity("blue",2,3);
             try {
-                test = roomRepo.byName("Test");
+                roomRepo.save(test);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("oy");
             }
             return null;
         });
-        System.out.println(room.nameRoom());
+//        System.out.println(room.nameRoom());
         List<Reservation> allReservations = reservationManager.all(room);
-        allReservations.forEach(System.out::println);
+       // allReservations.forEach(System.out::println);
 
 
     }

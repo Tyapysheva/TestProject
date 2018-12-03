@@ -3,10 +3,10 @@ package service.management;
 import repository.BasicReservationRepo;
 import repository.ReservationRepo;
 import repository.RoomRepo;
-import repository.impl.RoomEntityRepoImpl;
+
 import repository.impl.RoomRepoImpl;
 
-import java.sql.Connection;
+
 
 public class BasicModelOpManagement implements ModelOpManagement {
 
@@ -23,7 +23,7 @@ public class BasicModelOpManagement implements ModelOpManagement {
 
     @Override
     public RoomRepo roomRepo() {
-        return new RoomRepoImpl();
+        return new RoomRepoImpl(entityOps.roomEntityRepo());
     }
 
     @Override

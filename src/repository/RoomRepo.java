@@ -2,14 +2,15 @@ package repository;
 
 import entity.Room;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface RoomRepo {
-    List<Room> all();
+    List<Room> all()throws Exception;
 
-    Room byName(String name) throws SQLException;
+    Room byId (int id) throws Exception;
 
-    void save(Room room);
+    Room byName(String name) throws Exception;
+
+    void save(Room room)throws Exception;
 
 }

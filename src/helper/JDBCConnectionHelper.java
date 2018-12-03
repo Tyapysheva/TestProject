@@ -14,10 +14,10 @@ public class JDBCConnectionHelper {
     private static final String PASSWORD = "123456";
     private static Iterator<Driver> ps;
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
-        //ps = Service.providers(Driver.class);
+        ps = Service.providers(Driver.class);
 
 
-        Class.forName("org.postgresql.Driver");
+        //Class.forName("org.postgresql.Driver");
         Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
 
         return connection;
