@@ -7,4 +7,6 @@ public class JacksonSerialization implements Serialization {
     public String serialized(Room room) {
         return null;
     }
+
+
 }
